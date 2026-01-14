@@ -1,0 +1,63 @@
+[
+  {
+    "_id": "507f1f77bcf86cd799439021",
+    "user_id": "507f1f77bcf86cd799439011",
+    "driver_id": "507f1f77bcf86cd799439012",
+    "pickup_location": {
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "address": "123 Main St, San Francisco, CA"
+    },
+    "destination_location": {
+      "latitude": 37.7849,
+      "longitude": -122.4094,
+      "address": "456 Oak Ave, San Francisco, CA"
+    },
+    "status": "COMPLETED",
+    "vehicle_type": "AMBULANCE",
+    "estimated_fare": 25.50,
+    "final_fare": 27.75,
+    "requested_at": "2024-01-01T10:00:00.000Z",
+    "completed_at": "2024-01-01T10:30:00.000Z",
+    "created_at": "2024-01-01T10:00:00.000Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439022",
+    "user_id": "507f1f77bcf86cd799439011",
+    "pickup_location": {
+      "latitude": 37.7649,
+      "longitude": -122.4294,
+      "address": "789 Pine St, San Francisco, CA"
+    },
+    "destination_location": {
+      "latitude": 37.7549,
+      "longitude": -122.4394,
+      "address": "321 Elm St, San Francisco, CA"
+    },
+    "status": "PENDING",
+    "vehicle_type": "CAR",
+    "estimated_fare": 15.25,
+    "requested_at": "2024-01-02T14:00:00.000Z",
+    "created_at": "2024-01-02T14:00:00.000Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439023",
+    "user_id": "507f1f77bcf86cd799439013",
+    "driver_id": "507f1f77bcf86cd799439012",
+    "pickup_location": {
+      "latitude": 37.7449,
+      "longitude": -122.4494,
+      "address": "555 Market St, San Francisco, CA"
+    },
+    "destination_location": {
+      "latitude": 37.7349,
+      "longitude": -122.4594,
+      "address": "777 Mission St, San Francisco, CA"
+    },
+    "status": "CANCELLED",
+    "vehicle_type": "AMBULANCE",
+    "estimated_fare": 30.00,
+    "requested_at": "2024-01-03T16:00:00.000Z",
+    "created_at": "2024-01-03T16:00:00.000Z"
+  }
+]

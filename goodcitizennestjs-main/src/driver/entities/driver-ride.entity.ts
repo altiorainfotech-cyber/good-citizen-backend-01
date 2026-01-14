@@ -1,0 +1,47 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument, Types } from 'mongoose';
+import { User } from '../../user/entities/user.entity';
+import { RideStatus } from '../../common/utils';
+
+@Schema({ versionKey: false })
+export class DriverRide {
+  @Prop({ type: Types.ObjectId, ref: User.name })
+  driver_id!: Types.ObjectId;
+
+  @Prop({ type: Types.ObjectId, ref: User.name })
+  user_id!: Types.ObjectId;
+
+  @Prop({
+    type: {
+      latitude: { type: Number, required: true },
+      longitude: { type: Number, required: true },
+    },
+  })
+  pickup_location!: { latitude: number; longitude: number };
+
+  @Prop({
+    type: {
+      latitude: { type: Number, required: true },
+      longitude: { type: Number, required: true },
+    },
+  })
+  drop_location!: { latitude: number; longitude: number };
+
+  @Prop({ enum: RideStatus, default: RideStatus.REQUESTED })
+  status!: string;
+
+  @Prop()
+  pickup_address!: string;
+
+  @Prop()
+  drop_address!: string;
+
+  @Prop()
+  last_notification!: Date;
+
+  @Prop({ default: Date.now() })
+  created_at!: Date;
+}
+
+export type DriverRideDocument = HydratedDocument<DriverRide>;
+export const DriverRideSchema = SchemaFactory.createForClass(DriverRide);

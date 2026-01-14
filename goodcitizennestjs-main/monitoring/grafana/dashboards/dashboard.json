@@ -1,0 +1,227 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Ride-Hailing Backend Monitoring",
+    "tags": ["ride-hailing", "backend", "monitoring"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "HTTP Request Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(http_requests_total[5m])",
+            "legendFormat": "{{method}} {{route}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Requests/sec"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": 2,
+        "title": "Response Time",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))",
+            "legendFormat": "95th percentile"
+          },
+          {
+            "expr": "histogram_quantile(0.50, rate(http_request_duration_seconds_bucket[5m]))",
+            "legendFormat": "50th percentile"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Seconds"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        }
+      },
+      {
+        "id": 3,
+        "title": "Error Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(http_requests_total{status=~\"5..\"}[5m])",
+            "legendFormat": "5xx errors"
+          },
+          {
+            "expr": "rate(http_requests_total{status=~\"4..\"}[5m])",
+            "legendFormat": "4xx errors"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Errors/sec"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        }
+      },
+      {
+        "id": 4,
+        "title": "Memory Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "process_resident_memory_bytes / 1024 / 1024",
+            "legendFormat": "Memory (MB)"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "MB"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        }
+      },
+      {
+        "id": 5,
+        "title": "Active WebSocket Connections",
+        "type": "singlestat",
+        "targets": [
+          {
+            "expr": "websocket_connections_active",
+            "legendFormat": "Active Connections"
+          }
+        ],
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 16
+        }
+      },
+      {
+        "id": 6,
+        "title": "Available Drivers",
+        "type": "singlestat",
+        "targets": [
+          {
+            "expr": "available_drivers_count",
+            "legendFormat": "Available Drivers"
+          }
+        ],
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 6,
+          "y": 16
+        }
+      },
+      {
+        "id": 7,
+        "title": "Pending Ride Requests",
+        "type": "singlestat",
+        "targets": [
+          {
+            "expr": "pending_ride_requests_count",
+            "legendFormat": "Pending Requests"
+          }
+        ],
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 12,
+          "y": 16
+        }
+      },
+      {
+        "id": 8,
+        "title": "Emergency Alerts Sent",
+        "type": "singlestat",
+        "targets": [
+          {
+            "expr": "increase(emergency_alerts_sent_total[1h])",
+            "legendFormat": "Alerts (1h)"
+          }
+        ],
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 18,
+          "y": 16
+        }
+      },
+      {
+        "id": 9,
+        "title": "Database Query Performance",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(mongodb_query_duration_seconds_bucket[5m]))",
+            "legendFormat": "95th percentile"
+          },
+          {
+            "expr": "histogram_quantile(0.50, rate(mongodb_query_duration_seconds_bucket[5m]))",
+            "legendFormat": "50th percentile"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Seconds"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 20
+        }
+      },
+      {
+        "id": 10,
+        "title": "Redis Operations",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(redis_commands_processed_total[5m])",
+            "legendFormat": "Commands/sec"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Commands/sec"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 20
+        }
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "5s"
+  }
+}

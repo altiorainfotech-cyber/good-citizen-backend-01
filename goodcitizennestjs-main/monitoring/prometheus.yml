@@ -1,0 +1,46 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "alert_rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # NestJS application
+  - job_name: 'nestjs-app'
+    static_configs:
+      - targets: ['app:3000']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+
+  # Node.js process metrics
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # Redis metrics
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis-exporter:9121']
+
+  # MongoDB metrics
+  - job_name: 'mongodb'
+    static_configs:
+      - targets: ['mongodb-exporter:9216']
+
+  # Nginx metrics
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx-exporter:9113']

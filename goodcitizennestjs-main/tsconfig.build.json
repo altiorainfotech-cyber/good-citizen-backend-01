@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "strict": false,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "exactOptionalPropertyTypes": false,
+    "noUncheckedIndexedAccess": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+}
