@@ -4,14 +4,14 @@
   "installCommand": "cd goodcitizennestjs-main && npm install",
   "builds": [
     {
-      "src": "goodcitizennestjs-main/api/index.ts",
+      "src": "goodcitizennestjs-main/dist/api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "goodcitizennestjs-main/api/index.ts"
+      "dest": "goodcitizennestjs-main/dist/api/index.js"
     }
   ],
   "env": {
