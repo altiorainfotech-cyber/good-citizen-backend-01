@@ -4,12 +4,12 @@ import { AdminController } from './admin.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { HttpModule } from '@nestjs/axios';
 import { MongooseModule } from '@nestjs/mongoose';
-import { rideModelDefinitions } from 'src/driver/entities';
-import { modelDefinitions } from 'src/user/entities';
-import { commonModelDefinitions } from 'src/entities';
-import { CommonService } from 'src/common/common.service';
+import { rideModelDefinitions } from '../driver/entities';
+import { modelDefinitions } from '../user/entities';
+import { commonModelDefinitions } from '../entities';
+import { CommonService } from '../common/common.service';
 import { AdminModelDefinitions } from './entities';
-import { Ride, RideSchema } from 'src/ride/entities/ride.entity';
+import { Ride, RideSchema } from '../ride/entities/ride.entity';
 
 @Module({
   imports: [

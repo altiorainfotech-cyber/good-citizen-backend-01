@@ -25,8 +25,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import {
   DriverRide,
   DriverRideDocument,
-} from 'src/driver/entities/driver-ride.entity';
-import { User, UserDocument } from 'src/user/entities/user.entity';
+} from '../driver/entities/driver-ride.entity';
+import { User, UserDocument } from '../user/entities/user.entity';
 import { WebSocketEventCompatibilityService } from '../common/websocket-event-compatibility.service';
 
 interface CustomSocket extends Socket {

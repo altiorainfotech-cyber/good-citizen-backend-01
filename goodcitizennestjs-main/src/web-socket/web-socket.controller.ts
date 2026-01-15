@@ -17,10 +17,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiConsumes, ApiOperation } from '@nestjs/swagger';
-import { Roles } from 'src/authentication/roles.decorator';
+import { Roles } from '../authentication/roles.decorator';
 import { UserType } from '../common/utils';
-import { JwtAuthGuard } from 'src/authentication/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/authentication/guards/roles.guard';
+import { JwtAuthGuard } from '../authentication/guards/jwt-auth.guard';
+import { RolesGuard } from '../authentication/guards/roles.guard';
 
 @Controller({ path: 'web-socket', version: '1' })
 export class WebSocketController {

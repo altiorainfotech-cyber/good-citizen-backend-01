@@ -25,9 +25,9 @@ import {
   MultiLanguageContentDto,
 } from './dto/create-admin.dto';
 import { UserType } from '../common/utils';
-import { Roles } from 'src/authentication/roles.decorator';
-import { JwtAuthGuard } from 'src/authentication/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/authentication/guards/roles.guard';
+import { Roles } from '../authentication/roles.decorator';
+import { JwtAuthGuard } from '../authentication/guards/jwt-auth.guard';
+import { RolesGuard } from '../authentication/guards/roles.guard';
 import { Approval } from './dto/driver.dto';
 
 @Controller('admin')

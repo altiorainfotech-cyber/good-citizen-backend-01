@@ -23,20 +23,20 @@ import {
   MultiLanguageContentDto,
 } from './dto/create-admin.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from 'src/user/entities/user.entity';
+import { User, UserDocument } from '../user/entities/user.entity';
 import { FilterQuery, Model, Types } from 'mongoose';
-import { Session, SessionDocument } from 'src/user/entities/session.entity';
+import { Session, SessionDocument } from '../user/entities/session.entity';
 import {
   Notification,
   NotificationDocument,
-} from 'src/entities/notification.entity';
-import { CommonService } from 'src/common/common.service';
+} from '../entities/notification.entity';
+import { CommonService } from '../common/common.service';
 import { ConfigService } from '@nestjs/config';
 import { Update, UserType, DriverApproval, RideStatus } from '../common/utils';
 import {
   DriverRide,
   DriverRideDocument,
-} from 'src/driver/entities/driver-ride.entity';
+} from '../driver/entities/driver-ride.entity';
 import { Approval } from './dto/driver.dto';
 import { Content, ContentDocument } from './entities/content.entity';
 import {
@@ -55,7 +55,7 @@ import {
   EmergencyBroadcast,
   EmergencyBroadcastDocument,
 } from './entities/emergency-broadcast.entity';
-import { Ride, RideDocument } from 'src/ride/entities/ride.entity';
+import { Ride, RideDocument } from '../ride/entities/ride.entity';
 
 @Injectable()
 export class AdminService {

@@ -4,9 +4,9 @@
 import { Controller, Get, Query, UseGuards, Req, Param } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ApiBearerAuth, ApiOperation, ApiConsumes } from '@nestjs/swagger';
-import { Roles } from 'src/authentication/roles.decorator';
-import { RolesGuard } from 'src/authentication/guards/roles.guard';
-import { JwtAuthGuard } from 'src/authentication/guards/jwt-auth.guard';
+import { Roles } from '../authentication/roles.decorator';
+import { RolesGuard } from '../authentication/guards/roles.guard';
+import { JwtAuthGuard } from '../authentication/guards/jwt-auth.guard';
 import { UserType } from '../common/utils';
 import { notification } from './dto/update-user.dto';
 
