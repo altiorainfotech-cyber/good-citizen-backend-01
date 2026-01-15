@@ -1,0 +1,53 @@
+services:
+  # Good Citizen Backend API
+  - type: web
+    name: good-citizen-api
+    runtime: node
+    region: oregon  # Change to your preferred region: oregon, frankfurt, singapore, ohio
+    plan: free  # Options: free, starter, standard, pro
+    rootDir: goodcitizennestjs-main
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: DATABASE_URL
+        sync: false  # You'll add this in Render Dashboard
+      - key: JWT_ACCESS_SECRET
+        sync: false
+      - key: JWT_ACCESS_EXPIRY
+        value: 1d
+      - key: TEMP_JWT_ACCESS_SECRET
+        sync: false
+      - key: TEMP_JWT_ACCESS_EXPIRY
+        value: 1m
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: JWT_REFRESH_EXPIRY
+        value: 7d
+      - key: VERIFICATION_JWT_SECRET
+        sync: false
+      - key: VERIFICATION_JWT_EXPIRY
+        value: 1m
+      - key: AUTH0_DOMAIN
+        value: dev-5o4rcti0fs2w8kqs.us.auth0.com
+      - key: AUTH0_CLIENT_ID
+        sync: false
+      - key: AUTH0_CLIENT_SECRET
+        sync: false
+      - key: AUTH0_AUDIENCE
+        value: your-auth0-api-identifier
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: PROJECT_ID
+        value: goodcitizenwebdemo
+      - key: CLIENT_EMAIL
+        sync: false
+      - key: PRIVATE_KEY
+        sync: false
+      - key: LOG_LEVEL
+        value: debug
+    autoDeploy: true
