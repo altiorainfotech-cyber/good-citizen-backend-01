@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class UploadDto {
-  file: Express.Multer.File;
+  file: any;
   documentType?: string;
 }
 

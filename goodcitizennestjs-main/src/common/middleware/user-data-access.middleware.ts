@@ -9,16 +9,24 @@ import {
   ForbiddenException,
   Logger,
 } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import { UserType } from '../utils';
 import { SecurityAuditService } from '../../authentication/security-audit.service';
 
-interface AuthenticatedRequest extends Request {
+interface AuthenticatedRequest {
   user?: {
     _id: string;
     role: UserType;
     email?: string;
   };
+  params: any;
+  query: any;
+  body: any;
+  ip: string;
+  connection: any;
+  get: (name: string) => string | undefined;
+  url: string;
+  method: string;
 }
 
 @Injectable()

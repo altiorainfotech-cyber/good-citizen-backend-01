@@ -46,7 +46,7 @@ export class FileValidationService {
    * Comprehensive file validation
    */
   async validateFile(
-    file: Express.Multer.File,
+    file: any,
     documentType?: string,
   ): Promise<FileValidationResult> {
     const errors: string[] = [];
@@ -124,7 +124,7 @@ export class FileValidationService {
    * Validate multiple files
    */
   async validateFiles(
-    files: Express.Multer.File[],
+    files: any[],
     documentType?: string,
   ): Promise<FileValidationResult[]> {
     if (!files || files.length === 0) {
@@ -210,7 +210,7 @@ export class FileValidationService {
     return validExtensions.document.includes(extension);
   }
 
-  private containsSuspiciousContent(file: Express.Multer.File): boolean {
+  private containsSuspiciousContent(file: any): boolean {
     // Check for suspicious file signatures or patterns
     const suspiciousPatterns = [
       // Executable signatures

@@ -58,7 +58,7 @@ export class S3ManagerService {
 
   // Enhanced file upload with comprehensive security validation
   async uploadFile(
-    file: Express.Multer.File,
+    file: any,
     userId?: string,
     documentType?: string,
   ) {

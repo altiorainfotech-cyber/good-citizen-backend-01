@@ -1,7 +1,7 @@
 import { Injectable, NestMiddleware, Logger } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 
-export interface VersionedRequest extends Request {
+export interface VersionedRequest {
   apiVersion?: string;
   isLegacyVersion?: boolean;
   versionMetadata?: {
@@ -14,6 +14,12 @@ export interface VersionedRequest extends Request {
       migrationGuide?: string;
     };
   };
+  method: string;
+  originalUrl: string;
+  get: (name: string) => string | undefined;
+  url: string;
+  query: any;
+  headers: any;
 }
 
 /**
@@ -76,7 +82,7 @@ export class VersionCompatibilityMiddleware implements NestMiddleware {
   /**
    * Extract API version from request
    */
-  private extractVersion(req: Request): string {
+  private extractVersion(req: VersionedRequest): string {
     // Priority order: header > query > path > default
     const headerVersion =
       req.headers['x-api-version'] || req.headers['api-version'];
