@@ -67,7 +67,9 @@ export class DriverController {
   async ride_detail(@Param() ID: ID, @Req() req) {
     return await this.driverService.ride_detail(ID.id, req.user);
   }
-
+  /**
+   * dssfdskfd
+   */
   /**
    * Will handle the end ride controller logic
    * @returns
