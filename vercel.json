@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "buildCommand": "cd goodcitizennestjs-main && npm install && npm run build",
+  "installCommand": "cd goodcitizennestjs-main && npm install",
+  "builds": [
+    {
+      "src": "goodcitizennestjs-main/api/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "goodcitizennestjs-main/api/index.ts"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
